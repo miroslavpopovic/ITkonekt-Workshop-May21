@@ -1,14 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Ingredients.Protos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Frontend
 {
@@ -25,6 +21,11 @@ namespace Frontend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddGrpcClient<IngredientsService.IngredientsServiceClient>(
+                options =>
+                {
+                    options.Address = new Uri("https://localhost:5003");
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
