@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,20 +24,25 @@ namespace Frontend.Controllers
         [HttpGet("")]
         public async Task<IActionResult> Index()
         {
-            var response = await _ingredients.GetToppingsAsync(new GetToppingsRequest());
+            var toppingsResponse = await _ingredients.GetToppingsAsync(new GetToppingsRequest());
 
-            var toppings = response.Toppings.Select(t => new ToppingViewModel
+            var toppings = toppingsResponse.Toppings.Select(t => new ToppingViewModel
             {
                 Id = t.Id,
                 Name = t.Name,
                 Price = Convert.ToDecimal(t.Price)
             }).ToList();
 
-            var crusts = new List<CrustViewModel>
+            var crustsResponse = await _ingredients.GetCrustsAsync(new GetCrustsRequest());
+
+            var crusts = crustsResponse.Crusts.Select(c => new CrustViewModel
             {
-                new("thin9", "Thin", 9, 5m),
-                new("deep9", "Deep", 9, 6m),
-            };
+                Id = c.Id,
+                Name = c.Name,
+                Size = c.Size,
+                Price = Convert.ToDecimal(c.Price)
+            }).ToList();
+
             var viewModel = new HomeViewModel(toppings, crusts);
             return View(viewModel);
         }
