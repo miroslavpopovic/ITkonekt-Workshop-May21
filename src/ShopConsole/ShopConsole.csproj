@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <UserSecretsId>dotnet-ShopConsole-E480201A-0FB6-411B-BB1F-B8A246C344DA</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+        <PackageReference Include="Google.Protobuf" Version="3.17.0" />
+        <PackageReference Include="Grpc.AspNetCore.Server.ClientFactory" Version="2.37.0" />
+        <PackageReference Include="Grpc.Tools" Version="2.37.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Protobuf Include="Protos\orders.proto" GrpcServices="Client">
+          <Link>Protos/orders.proto</Link>
+      </Protobuf>
+    </ItemGroup>
+</Project>

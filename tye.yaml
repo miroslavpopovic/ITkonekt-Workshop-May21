@@ -21,3 +21,6 @@ services:
   bindings:
       - protocol: https
         port: 5005
+#- name: shopconsole
+#  project: src/ShopConsole/ShopConsole.csproj
+
