@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Orders.Protos;
 
 namespace Frontend
 {
@@ -21,6 +22,7 @@ namespace Frontend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             services.AddGrpcClient<IngredientsService.IngredientsServiceClient>(
                 (provider, options) =>
                 {
@@ -28,6 +30,15 @@ namespace Frontend
                     var uri = config.GetServiceUri("Ingredients", "https");
 
                     options.Address = uri ?? new Uri("https://localhost:5003");
+                });
+
+            services.AddGrpcClient<OrderService.OrderServiceClient>(
+                (provider, options) =>
+                {
+                    var config = provider.GetRequiredService<IConfiguration>();
+                    var uri = config.GetServiceUri("Orders", "https");
+
+                    options.Address = uri ?? new Uri("https://localhost:5005");
                 });
         }
 
