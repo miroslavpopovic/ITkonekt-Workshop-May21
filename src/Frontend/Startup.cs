@@ -22,9 +22,12 @@ namespace Frontend
         {
             services.AddControllersWithViews();
             services.AddGrpcClient<IngredientsService.IngredientsServiceClient>(
-                options =>
+                (provider, options) =>
                 {
-                    options.Address = new Uri("https://localhost:5003");
+                    var config = provider.GetRequiredService<IConfiguration>();
+                    var uri = config.GetServiceUri("Ingredients", "https");
+
+                    options.Address = uri ?? new Uri("https://localhost:5003");
                 });
         }
 
