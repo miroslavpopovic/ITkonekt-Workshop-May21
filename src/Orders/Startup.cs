@@ -23,7 +23,7 @@ namespace Orders
                 (provider, options) =>
                 {
                     var config = provider.GetRequiredService<IConfiguration>();
-                    var uri = config.GetServiceUri("Ingredients", "https");
+                    var uri = config.GetServiceUri("Ingredients");
 
                     options.Address = uri ?? new Uri("https://localhost:5003");
                 });
