@@ -2,7 +2,9 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 
 WORKDIR /code
 
-# Paste
+COPY ./grpc_health_probe /bin/
+RUN chmod +x /bin/grpc_health_probe
+
 COPY ./Pizza.sln .
 COPY ./src/Frontend/Frontend.csproj ./src/Frontend/
 COPY ./src/Ingredients/Ingredients.csproj ./src/Ingredients/
