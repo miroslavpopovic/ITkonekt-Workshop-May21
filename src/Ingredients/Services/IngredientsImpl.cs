@@ -24,6 +24,8 @@ namespace Ingredients.Services
         public override async Task<GetToppingsResponse> GetToppings(
             GetToppingsRequest request, ServerCallContext context)
         {
+            _logger.LogInformation("GetToppings");
+
             try
             {
                 var toppings = await _toppingData.GetAsync(context.CancellationToken);

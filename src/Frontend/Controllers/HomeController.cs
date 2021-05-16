@@ -11,6 +11,8 @@ namespace Frontend.Controllers
 {
     public class HomeController : Controller
     {
+        private static readonly ActivitySource Activities = new(nameof(HomeController));
+
         private readonly IngredientsService.IngredientsServiceClient _ingredients;
         private readonly ILogger<HomeController> _log;
 
@@ -24,6 +26,7 @@ namespace Frontend.Controllers
         [HttpGet("")]
         public async Task<IActionResult> Index()
         {
+            using var activity = Activities.StartActivity("GetIngredients");
             var toppingsResponse = await _ingredients.GetToppingsAsync(new GetToppingsRequest());
 
             var toppings = toppingsResponse.Toppings.Select(t => new ToppingViewModel

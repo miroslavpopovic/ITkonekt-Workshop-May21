@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders", "src\Orders\Orders
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopConsole", "src\ShopConsole\ShopConsole.csproj", "{FAFF3A7D-8DB6-4FFB-87D0-31DC7C34468D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JaegerTracing", "src\JaegerTracing\JaegerTracing.csproj", "{9C33E2AD-0563-4EF4-B5F8-1EA734295A30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,18 @@ Global
 		{FAFF3A7D-8DB6-4FFB-87D0-31DC7C34468D}.Release|x64.Build.0 = Release|Any CPU
 		{FAFF3A7D-8DB6-4FFB-87D0-31DC7C34468D}.Release|x86.ActiveCfg = Release|Any CPU
 		{FAFF3A7D-8DB6-4FFB-87D0-31DC7C34468D}.Release|x86.Build.0 = Release|Any CPU
+		{9C33E2AD-0563-4EF4-B5F8-1EA734295A30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C33E2AD-0563-4EF4-B5F8-1EA734295A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C33E2AD-0563-4EF4-B5F8-1EA734295A30}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9C33E2AD-0563-4EF4-B5F8-1EA734295A30}.Debug|x64.Build.0 = Debug|Any CPU
+		{9C33E2AD-0563-4EF4-B5F8-1EA734295A30}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9C33E2AD-0563-4EF4-B5F8-1EA734295A30}.Debug|x86.Build.0 = Debug|Any CPU
+		{9C33E2AD-0563-4EF4-B5F8-1EA734295A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C33E2AD-0563-4EF4-B5F8-1EA734295A30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C33E2AD-0563-4EF4-B5F8-1EA734295A30}.Release|x64.ActiveCfg = Release|Any CPU
+		{9C33E2AD-0563-4EF4-B5F8-1EA734295A30}.Release|x64.Build.0 = Release|Any CPU
+		{9C33E2AD-0563-4EF4-B5F8-1EA734295A30}.Release|x86.ActiveCfg = Release|Any CPU
+		{9C33E2AD-0563-4EF4-B5F8-1EA734295A30}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -167,6 +181,7 @@ Global
 		{F312BA95-CA6E-4187-B022-138490B97DF6} = {B14318FC-513A-4B00-B523-C16956C9ACB9}
 		{06A6C47F-EF21-4832-A4C9-6330BC3DC33E} = {FC16A82E-404B-47FF-B697-CF83DAD8C637}
 		{FAFF3A7D-8DB6-4FFB-87D0-31DC7C34468D} = {FC16A82E-404B-47FF-B697-CF83DAD8C637}
+		{9C33E2AD-0563-4EF4-B5F8-1EA734295A30} = {FC16A82E-404B-47FF-B697-CF83DAD8C637}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CDA6358A-116C-4E32-9FFD-1CD8D4465909}

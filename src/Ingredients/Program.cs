@@ -1,4 +1,5 @@
 using System;
+using JaegerTracing;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Hosting;
@@ -16,6 +17,7 @@ namespace Ingredients
         // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .AddJaegerTracing()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     // if (OperatingSystem.IsMacOS())
