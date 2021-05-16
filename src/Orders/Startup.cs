@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using System.Security.Claims;
 using AuthHelp;
 using Ingredients.Protos;
@@ -23,6 +24,9 @@ namespace Orders
         {
             services.AddGrpc();
 
+            services.AddHttpClient("ingredients")
+                .ConfigurePrimaryHttpMessageHandler(DevelopmentModeCertificateHelper.CreateClientHandler);
+
             services.AddGrpcClient<IngredientsService.IngredientsServiceClient>(
                 (provider, options) =>
                 {
@@ -30,6 +34,12 @@ namespace Orders
                     var uri = config.GetServiceUri("Ingredients", "https");
 
                     options.Address = uri ?? new Uri("https://localhost:5003");
+                })
+                .ConfigureChannel((provider, channel) =>
+                {
+                    channel.HttpClient = provider.GetRequiredService<IHttpClientFactory>().CreateClient("ingredients");
+                    channel.DisposeHttpClient = true;
+                    channel.HttpHandler = null;
                 });
 
             services.AddOrderPubSub();

@@ -1,13 +1,16 @@
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Grpc.Core;
 using Ingredients.Protos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using Pizza.Data;
 
 namespace Ingredients.Services
 {
+    [Authorize]
     public class IngredientsImpl : IngredientsService.IngredientsServiceBase
     {
         private readonly IToppingData _toppingData;
@@ -24,6 +27,9 @@ namespace Ingredients.Services
         public override async Task<GetToppingsResponse> GetToppings(
             GetToppingsRequest request, ServerCallContext context)
         {
+            var userName = context.GetHttpContext().User.FindFirst(ClaimTypes.Name)?.Value;
+            _logger.LogInformation($"GetToppings from {userName}");
+
             try
             {
                 var toppings = await _toppingData.GetAsync(context.CancellationToken);
