@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Ingredients.Protos;
+using Microsoft.AspNetCore.Authorization;
 using Orders.Protos;
 using Orders.PubSub;
 
@@ -24,6 +25,7 @@ namespace Orders.Services
             _orderMessages = orderMessages;
         }
 
+        [Authorize]
         public override async Task<PlaceOrderResponse> PlaceOrder(
             PlaceOrderRequest request, ServerCallContext context)
         {
